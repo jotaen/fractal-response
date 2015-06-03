@@ -54,7 +54,7 @@ class FractalResponse extends Response
    *  Serializes the original content
    *
    *  @param Fractal\ResourceAbstract $resource
-   *  @return string
+   *  @return $this
    */
   protected function serialize($resource)
   {
