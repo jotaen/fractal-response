@@ -1,0 +1,26 @@
+{
+    "name": "jotaen/fractal-response",
+    "type": "library",
+    "description": "Using Transformers in Laravel Responses",
+    "keywords": ["fractal","league","response","laravel","transform","json","api","serialize"],
+    "homepage": "http://github.com/jotaen/fractal-response",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Heuermann",
+            "email": "jan@jotaen.net",
+            "homepage": "http://jotaen.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/html": "~5.0",
+        "league/fractal": "~0.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "FractalResponse\\": "src"
+        }
+    }
+}
