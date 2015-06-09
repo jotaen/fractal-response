@@ -26,7 +26,7 @@ class Controller extends BaseController
     {
       $book = new Book();
       $response = new Response($book, 200);
-      $response->with(new BookTransformer())
+      $response->with(new BookTransformer());
       return $response;
     }
 
@@ -34,7 +34,7 @@ class Controller extends BaseController
     {
       $books = [ new Book(), new Book() ];
       $response = new Response($books, 200);
-      $response->with(new BookTransformer())
+      $response->with(new BookTransformer());
       return $response;
     }
 }
