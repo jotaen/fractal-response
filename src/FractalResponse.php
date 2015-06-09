@@ -8,6 +8,8 @@ use League\Fractal;
 class FractalResponse extends Response
 {
 
+  protected $isSerialized = false;
+
   /**
    * Set the content on the response.
    *
@@ -23,29 +25,23 @@ class FractalResponse extends Response
 
 
   /**
-   *  Serializes the response content as single Item by using the Transformer
+   *  Serializes the response content by using the Transformer
    *
    *  @param Fractal\TransformerAbstract $transformer
    *  @return $this
    */
-  public function item(Fractal\TransformerAbstract $transformer)
+  public function with(Fractal\TransformerAbstract $transformer)
   {
-    $resource = new Fractal\Resource\Item($this->original, $transformer);
+    $resource = null;
+    if (is_array($this->getOriginalContent())) {
+      $resource = new Fractal\Resource\Collection($this->getOriginalContent(), $transformer);
+    }
+    else {
+      $resource = new Fractal\Resource\Item($this->getOriginalContent(), $transformer);
+    }
+
+    $this->isSerialized = true;
     
-    return $this->serialize($resource);   
-  }
-
-
-  /**
-   *  Serializes the response content as Collection by using the Transformer
-   *
-   *  @param Fractal\TransformerAbstract $transformer
-   *  @return $this
-   */
-  public function collection(Fractal\TransformerAbstract $transformer)
-  {
-    $resource = new Fractal\Resource\Collection($this->original, $transformer);
-
     return $this->serialize($resource);   
   }
 
